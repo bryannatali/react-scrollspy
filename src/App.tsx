@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, useEffect } from "react";
+
+import Scrollspy from "./components/Scrollspy";
+import Item from "./components/Item";
 
 function App() {
+  const screen1Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const app = document.querySelector("body");
+    console.log(app);
+    window.addEventListener("scroll", console.log);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" ref={screen1Ref}>
+      <h1 style={{ height: 1000 }}>HELLO</h1>
+      <Scrollspy>
+        <Item id="screen-1" ref={null} />
+      </Scrollspy>
     </div>
   );
 }
